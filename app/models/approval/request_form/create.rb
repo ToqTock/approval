@@ -6,7 +6,7 @@ module Approval
         def prepare
           instrument "request" do |payload|
             ::Approval::Request.transaction do
-              payload[:comment] = request.comments.new(user_id: user.id, content: reason)
+              payload[:comment] = request.comments.new(user: user, content: reason)
               Array(records).each do |record|
                 request.items.new(
                   event: "create",

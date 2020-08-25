@@ -2,7 +2,9 @@ class CreateApprovalTables < ActiveRecord::Migration[5.0]
   def change
     create_table :approval_requests do |t|
       t.integer  :request_user_id, null: false
+      t.string   :request_user_type, null: false
       t.integer  :respond_user_id
+      t.string   :respond_user_type
       t.integer  :state,           null: false, limit: 1, default: 0
       t.datetime :requested_at,    null: false
       t.datetime :cancelled_at
@@ -33,6 +35,7 @@ class CreateApprovalTables < ActiveRecord::Migration[5.0]
     create_table :approval_comments do |t|
       t.integer :request_id, null: false
       t.integer :user_id,    null: false
+      t.string  :user_type, null: false
       t.text    :content,    null: false
 
       t.timestamps

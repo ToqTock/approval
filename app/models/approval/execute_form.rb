@@ -36,7 +36,7 @@ module Approval
         instrument "execute" do |payload|
           ::Approval::Request.transaction do
             request.lock!
-            payload[:comment] = request.comments.new(user_id: user.id, content: reason) if reason
+            payload[:comment] = request.comments.new(user: user, content: reason) if reason
             request.execute
             yield(request)
           end
@@ -52,7 +52,7 @@ module Approval
       def ensure_user_same_as_request_user
         return unless user && request
 
-        unless user.id == request.request_user_id
+        unless user == request.request_user
           errors.add(:user, :cannot_execute_others_request)
         end
       end

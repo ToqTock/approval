@@ -16,10 +16,12 @@ module Approval
     end
 
     def create_params_for_approval
+      # TODO: xxxx_ids, accept_nested_attributes_forまで取り込む
       attributes.except(*approval_ignore_fields).compact
     end
 
     def update_params_for_approval
+      # TODO: xxxx_ids, accept_nested_attributes_forまで取り込む　ひょっとしたら要らない
       changes.except(*approval_ignore_fields).each_with_object({}) {|(k, v), h| h[k] = v.last }
     end
   end

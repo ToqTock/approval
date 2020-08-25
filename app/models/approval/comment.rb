@@ -3,7 +3,7 @@ module Approval
     self.table_name = :approval_comments
 
     def self.define_user_association
-      belongs_to :user, class_name: Approval.config.user_class_name
+      belongs_to :user, polymorphic: true
     end
 
     belongs_to :request, class_name: :"Approval::Request", inverse_of: :comments
