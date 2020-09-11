@@ -11,7 +11,7 @@ module Approval
                 request.items.new(
                   event: "create",
                   resource_type: record.class.to_s,
-                  params: attributes,
+                  params: record.create_params_for_approval,
                   #TODO: assign_ignore_fieldsを考慮した形でhash作成する
                   # params: record.create_params_for_approval,
                 )

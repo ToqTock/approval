@@ -7,8 +7,8 @@ module Approval
       has_many :approval_comments, class_name: :"Approval::Comment", as: :user
     end
 
-    def request_for_create(records, attributes, reason:)
-      Approval::RequestForm::Create.new(user: self, attributes: attributes, reason: reason, records: records)
+    def request_for_create(records, reason:)
+      Approval::RequestForm::Create.new(user: self, reason: reason, records: records)
     end
 
     def request_for_update(records, reason:)

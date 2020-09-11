@@ -6,7 +6,7 @@ module Approval
     EVENTS = %w[create update destroy perform].freeze
 
     belongs_to :request, class_name: :"Approval::Request", inverse_of: :items
-    belongs_to :resource, polymorphic: true, optional: true
+    belongs_to :resource, polymorphic: true, optional: true, autosave: false
 
     serialize :params, Hash
 
