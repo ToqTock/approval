@@ -28,7 +28,6 @@ module Approval
     end
 
     def pseudo_resource
-      byebug
       r = resource.presence || resource_type.constantize.new
       #TODO　ここでnilになっている
       r.assign_attributes(params.map {|k,v| [k,(v.respond_to?(:except)?v.except(:id):v)]}.to_h)
