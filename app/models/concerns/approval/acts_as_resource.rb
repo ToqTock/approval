@@ -17,7 +17,6 @@ module Approval
 
     def create_params_for_approval
       results = changing_attributes(self) #.except(*approval_ignore_fields)
-byebug
       self.class.reflect_on_all_associations.each do |assoc|
         attribute_name = assoc.name.to_s + '_attributes'
         next unless respond_to?("#{attribute_name}=") # accept_nested_attributes_for がある場合に限定
