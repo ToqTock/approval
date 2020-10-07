@@ -34,12 +34,18 @@ module Approval
       items.each(&:apply)
     end
 
+    after_initialize :default_values, if: :new_record?
+
     private
+
+      def default_values
+        self.requested = false
+      end
 
       def ensure_state_was_pending
         return unless persisted?
 
-        if %w[pending approved].exclude?(state_was)
+        if %w[pending approved rejected].exclude?(state_was)
           errors.add(:base, :already_performed)
         end
       end
