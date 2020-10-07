@@ -39,7 +39,7 @@ module Approval
     private
 
       def default_values
-        self.requested = false
+        self.requested = false if requested.nil?
       end
 
       def ensure_state_was_pending
