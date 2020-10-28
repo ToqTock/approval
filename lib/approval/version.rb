@@ -1,3 +1,3 @@
 module Approval
-  VERSION = "0.8".freeze
+  VERSION = "1.0".freeze
 end
